@@ -6,6 +6,7 @@ public class Libro {
 	private String nombreLibro;
 	private String autor;
 
+
 	public Libro(Integer codigo, String nombreLibro, String autor) {
 		this.codigo = codigo;
 		this.nombreLibro = nombreLibro;
@@ -35,6 +36,8 @@ public class Libro {
 	public void setAutor(String autor) {
 		this.autor = autor;
 	}
+
+	
 	
 	
 

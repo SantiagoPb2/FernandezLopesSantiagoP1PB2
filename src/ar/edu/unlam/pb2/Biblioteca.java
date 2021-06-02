@@ -11,6 +11,8 @@ public class Biblioteca {
 	private Integer prestamosRealizados;
 	private Integer codigoPrestamo;
 	private Integer iterador = 0;
+	private Integer contador = 0;
+	private Boolean disponibilidad;
 	
 	public Biblioteca(String nombre) {
 		this.nombre = nombre;
@@ -22,6 +24,16 @@ public class Biblioteca {
 	
 	public void agregarLibro(Libro libro) {
 		this.libros.add(libro);
+	}
+	
+	public Boolean getDisponibilidad(Integer codigo) {
+		for(Libro libros: libros) {
+			if(libros.getCodigo().equals(codigo)) {
+				return true;
+			}
+		}
+		return false;
+		
 	}
 	
 	public Boolean prestarLibro(Integer codigo, Integer dni) {
@@ -50,6 +62,10 @@ public class Biblioteca {
 
 	public Integer getPrestamosRealizados() {
 		return prestamosRealizados;
+	}
+
+	public List<Libro> getLibros() {
+		return libros;
 	}
 	
 	

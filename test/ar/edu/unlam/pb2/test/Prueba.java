@@ -93,6 +93,18 @@ public class Prueba {
 		
 	}
 	
+	@Test
+	public void queAlPrestarUnLibroEsteNoEsteDisponible() {
+		Libro libro = new Historia(12,"NombreLibro","Santiago");
+		Estudiante estudiante = new Estudiante(41399474,"Fernandez","Santiago");
+		Biblioteca biblioteca = new Biblioteca("Azteca");
+		biblioteca.agregarLibro(libro);
+		biblioteca.agregarEstudiante(estudiante);
+		biblioteca.prestarLibro(12,41399474);
+		
+		assertFalse(biblioteca.getDisponibilidad(12));
+	}
+	
 	
 	
 	

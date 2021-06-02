@@ -10,6 +10,7 @@ public class Biblioteca {
 	private String nombre;
 	private Integer prestamosRealizados;
 	private Integer codigoPrestamo;
+	private Integer iterador = 0;
 	
 	public Biblioteca(String nombre) {
 		this.nombre = nombre;
@@ -24,7 +25,6 @@ public class Biblioteca {
 	}
 	
 	public Boolean prestarLibro(Integer codigo, Integer dni) {
-		Integer iterador = 0;
 		for(Libro busqueda: libros) {
 			if(busqueda.getCodigo().equals(codigo)) {
 				for(Estudiante busqueda2: estudiantes) {
@@ -32,7 +32,8 @@ public class Biblioteca {
 						this.librosPrestados.add(busqueda);
 						this.libros.remove(busqueda);
 						this.prestamosRealizados++;
-						busqueda2.setLibrosEnPosesion(iterador++);
+						iterador++;
+						busqueda2.setLibrosEnPosesion(iterador);
 						return true;
 					}
 				}
@@ -46,5 +47,11 @@ public class Biblioteca {
 		this.estudiantes.add(estudiante);
 		
 	}
+
+	public Integer getPrestamosRealizados() {
+		return prestamosRealizados;
+	}
+	
+	
 
 }

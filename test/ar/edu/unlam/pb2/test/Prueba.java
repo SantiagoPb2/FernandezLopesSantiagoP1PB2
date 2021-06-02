@@ -59,13 +59,37 @@ public class Prueba {
 	public void queNoSePuedaPrestarUnLibroaUnEstudianteConMasDeDosLibros() {
 		Libro libro = new Historia(12,"NombreLibro","Santiago");
 		Libro libro1 = new Geografia(11,"Nombre","Santiago");
-		Libro libro2 = new Matematica(9,"Nombre","Santiago");
+		Libro libro2 = new Matematica(9,"Nombre","Santiago");		
 		Estudiante estudiante = new Estudiante(41399474,"Fernandez","Santiago");
 		Biblioteca biblioteca = new Biblioteca("Azteca");
 		biblioteca.agregarLibro(libro);
 		biblioteca.agregarLibro(libro1);
 		biblioteca.agregarLibro(libro2);
 		biblioteca.agregarEstudiante(estudiante);
+		biblioteca.prestarLibro(11,41399474);
+		biblioteca.prestarLibro(12,41399474);
+
+		
+		assertFalse(biblioteca.prestarLibro(9,41399474));
+			
+	}
+	
+	@Test
+	public void queElIndicadorDePrestamosSeaCorrecto() {
+		Libro libro = new Historia(12,"NombreLibro","Santiago");
+		Libro libro1 = new Geografia(11,"Nombre","Santiago");
+		Libro libro2 = new Matematica(9,"Nombre","Santiago");		
+		Estudiante estudiante = new Estudiante(41399474,"Fernandez","Santiago");
+		Biblioteca biblioteca = new Biblioteca("Azteca");
+		biblioteca.agregarLibro(libro);
+		biblioteca.agregarLibro(libro1);
+		biblioteca.agregarLibro(libro2);
+		biblioteca.agregarEstudiante(estudiante);
+		biblioteca.prestarLibro(11,41399474);
+		biblioteca.prestarLibro(12,41399474);
+		biblioteca.prestarLibro(9,41399474);
+		
+		assertEquals(3,biblioteca.getPrestamosRealizados(),0);
 		
 	}
 	
